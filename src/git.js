@@ -20,4 +20,8 @@
 // we create a .gitignore file in the root of our project- here we can list the files we want git to ignore when we are adding them
 // when we run git add, it takes an argument- the files we want to add
 // if we want to add all the files- run git add .
+// run git commit- then provide the -m flag, then a message in double quotes- this describes what changed in this commit
+// the working tree refers to our files, the ones we edit in VSC
+// the working tree is clean when our files match up with the last commit
+// once we change something in our code, the git status changes
 // 
