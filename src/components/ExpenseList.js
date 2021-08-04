@@ -17,6 +17,7 @@ const ExpenseList = (props) => (
 
 // This function maps the store state to the component props
 const mapStateToProps = (state) => {
+    console.log(state)
     return {
         expenses: selectExpenses(state.expenses, state.filters)
     }

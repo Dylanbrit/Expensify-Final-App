@@ -4,10 +4,10 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
     return expenses.filter((expense) => {
         const createdAtMoment = moment(expense.createdAt)
         const textMatch = expense.description.toLowerCase().includes(text.toLowerCase())
-        const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true
-        const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true
+        // const startDateMatch = startDate ? startDate.isSameOrBefore(createdAtMoment, 'day') : true
+        // const endDateMatch = endDate ? endDate.isSameOrAfter(createdAtMoment, 'day') : true
 
-        return textMatch && startDateMatch && endDateMatch
+        return textMatch
     }).sort((a, b) => {
         if (sortBy === 'date') {
             return a.createdAt < b.createdAt ? 1 : -1
@@ -18,3 +18,7 @@ const getVisibleExpenses = (expenses, { text, sortBy, startDate, endDate }) => {
 }
 
 export default getVisibleExpenses
+
+// return textMatch && startDateMatch && endDateMatch
+// find out why startDateMatch and endDateMatch are filtering out all expenses
+// ever since i changed those two variables i have not been able to see new expenses when i add them
