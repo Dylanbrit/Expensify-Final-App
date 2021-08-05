@@ -3,7 +3,7 @@ import uuid from 'uuid'
 // We downloaded and imported the uuid library to generate our unique id for each expense
 // We just set the id property to uuid(), calling the function to run for each expense added
 // The other properties come from user interaction
-// TEST
+
 export const addExpense = ({ description = '', note = '', amount = 0, createdAt = 0 } = {}) => {
     return {
         type: 'ADD_EXPENSE',

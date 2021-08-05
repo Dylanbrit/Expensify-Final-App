@@ -30,4 +30,32 @@
 // if we run build:prod in the terminal, we will see that two files are being outpout by webpack
 // bundle.js is being ran, which contains the core application JS which is much smaller now
 // bundle.js.map is new, and is much bigger, but is only being loaded when someone cracks open the developers tools
-// 
+
+// CSS
+// we want to make it so that our css is not loaded after our html and javascript, because that could take a while
+// to do this, we can install a webpack plugin that helps ease the load on our bundle, which is where all of our css is currently being handled
+// first we need to import the plugin at the top of webpack.config so that we can create instances of it in webpack
+// then we create an instance of it for the styles we are extracting, passing in as an argument the name of the file we want our css in- styles.css should work well
+// in our 'use' rule under 'modules', we call CSSExtract to create an instance, then use the extract() method
+// we can pass in our plugins we want to run inside extract()
+// then we delete bundle.js. bundle.map.js, styles.css, and styles.css.map
+// then we just need to add a link to index.html that connects our css
+// to set up source maps for our css, so we can pinpoint where things come from in our editor code, we need to make an adjustment
+// first, we change our devtool configuration to run in 'inline-source-map' if not in production mode
+// then, we add the below code into our 'use' rule inside CSSExtract.extract()
+// {
+//     use: [
+//         {
+//             loader: 'css-loader',
+//             options: {
+//                 sourceMap: true
+//             }
+//         },
+//         {
+//             loader: 'sass-loader',
+//             options: {
+//                 sourceMap: true
+//             }
+//         }
+//     ]
+// }
