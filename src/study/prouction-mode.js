@@ -59,3 +59,41 @@
 //         }
 //     ]
 // }
+
+// Production Web Server
+// right now we have dev-server and live-server, but we want a web server for production
+// there is stuff included in dev-server and live-server that takes up resources that we dont need for production serving
+// we are going to create a file for serving up our public folder without weighing it down with other stuff
+// create a folder called server in the root of the project
+// create a file in there called server.js
+// we are going to use express as our tool to create our server
+// install express latest version
+// this runs from the command line using the node terminal command
+// load in express and create a new express application
+// const express = require('express')
+// const app = express()
+// we tell it where our files live and what port it should listen on
+// app.use() lets us customize some middleware
+// app.use(express.static())
+// a function comes back from express.static()
+
+// Heroku
+// this is an application deployment platform
+// almost all of our itneraction with heroku is through the command line
+// download heroku cli- this lets us use heroku in the command line
+// run heroku login to login to heroku
+// use heroku create to create an app
+// this can be ran with arguments to provide our own app name
+// this sets up our new app and adds a new git remote to our local repository
+// we can push our code remotely to heroku, heroku will deploy the app with the latest code
+// we need to teach heroku how to start our app and run the node server
+// it will try to run the start script in package.json, but it wont know to look into server.js through node- we have to say to do that by adding start script
+// "start": "node server/server.js"
+// we want our app.listen in the server file to locate our port
+// heroku provides an environment variable that changes all the time
+// we can create a variable in the server file that tells heroku to use the port from the env variable they give, or use port 3000 if there is none
+// use the port variable inside our app.listen() call and we are good to go
+// we need to teach heroku how to run webpack- we want to leave off a lot of files from the repo
+// heroku looks for custom scripts to handle this
+// "heroku-postbuild": "npm run build:prod"
+// then add the files to gitignore- public/bundle.js, public/bundle.js.map, public/styles.css, public/styles.css.map
